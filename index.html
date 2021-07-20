@@ -40,12 +40,79 @@
       function toColor(a){
          document.getElementById(a).style.backgroundColor="aquamarine";
       }
+      
+      const ch = document.createElement("audio");
+      ch.src = "https://nssh.tk/sound/國文課.wav";
+      var chc = 0;
+      const en = document.createElement("audio");
+      en.src = "https://nssh.tk/sound/英文課.wav";
+      var enc = 0;
+      const ma = document.createElement("audio");
+      ma.src = "https://nssh.tk/sound/數學課.wav";
+      var mac = 0;
+      const ph = document.createElement("audio");
+      ph.src = "https://nssh.tk/sound/物理課.wav";
+      var phc = 0;
+      const ce = document.createElement("audio");
+      ce.src = "https://nssh.tk/sound/化學課.wav";
+      var cec = 0;
+      const bi = document.createElement("audio");
+      bi.src = "https://nssh.tk/sound/生物課.wav";
+      var bic = 0;
+      const es = document.createElement("audio");
+      es.src = "https://nssh.tk/sound/地科課.wav";
+      var esc = 0;
+      const el = document.createElement("audio");
+      el.src = "https://nssh.tk/sound/英聽課.wav";
+      var elc = 0;
+      const ta = document.createElement("audio");
+      ta.src = "https://nssh.tk/sound/彈性課.wav";
+      var tac = 0;
+      const ps = document.createElement("audio");
+      ps.src = "https://nssh.tk/sound/體育課.wav";
+      var psc = 0;
 
       function checkUpdateColors(){
          var d = new Date(); 
          var h = d.getHours();
          var m = d.getMinutes();
          var day = d.getDay(); //Sun=0, Mon=1
+         
+
+
+        if(tac==0&&( h==8&&m==19&&(day>=1&&day<=5) )){
+            ta.play(); //彈性
+            tac++;
+         }else if(chc==0&&((h==15&&m==29&&day==1) || (h==11&&m==19&&(day==2||day==3)) || (h==13&&m==29&&(day==4||day==5)) || (h==14&&m==29&&day==5) )){
+            ch.play(); //國文
+            chc++;
+         }else if(enc==0&&( (h==14&&m==29&&(day>=1&&day<=3)) || (h==13&&m==29&&day==3) || (h==11&&m==19&&day==4) || (h==15&&m==29&&day==5) )){
+            en.play(); //英文
+            enc++;
+         }else if(mac==0&&( (h==9&&m==19&&(day==3||day==5)) || (h==10&&m==19&&day==2) || (h==13&&m==29&&day==1)  || (h==14&&m==29&&day==4) || (h==15&&m==29&&day==4) )){
+            ma.play(); //數學
+            mac++;
+         }else if(phc==0&&( (h==9&&m==19&&day==1) || (h==10&&m==19&&day==1) || (h==15&&m==29&&day==2) )){
+            ph.play(); //物理
+            phc++;
+         }else if(cec==0&&( (h==9&&m==19&&day==2) || (h==10&&m==19&&day==4) || (h==11&&m==19&&day==5) )){
+            ce.play(); //化學
+            cec++;
+         }else if(bic==0&&( (h==10&&m==19&&day==3) || (h==9&&m==19&&day==4) )){
+            bi.play(); //生物
+            bic++;
+         }else if(esc==0&&( (h==15&&m==29&&day==3)||(h==10&&m==19&&day==5) )){
+            es.play(); //地科
+            esc++;
+         }else if(elc==0&&( h==13&&m==29&&day==2 )){
+            el.play(); //英聽
+            elc++;
+         }else if(psc==0&&( h==11&&m==19&&day==1 )){
+            ps.play(); //體育
+            psc++;
+         }
+
+
 
          if((h==16&&m>=10) || (h>=17)){ //第一節：前一天的16:10-24:00
             toWhite(t7[day-1]);
@@ -97,7 +164,7 @@
             toColor(t7[day-1]);
             toColor(mt7[day-1]);
          }
-         setInterval(checkUpdatedColors, 3000);
+         setInterval(checkUpdateColors, 3000);
         }
    </script>
 </head>
