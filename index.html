@@ -57,52 +57,52 @@ a:active { text-decoration: none; }
          if((h==16&&m>=10) || (h>=17)){ //第一節：前一天的16:10-24:00
             document.getElementById(t7[day-1]).style.backgroundColor="white";
             document.getElementById(mt7[day-1]).style.backgroundColor="white";
-            document.getElementById(t1[day]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt1[day]).style.backgroundColor="AEFFC1";
+            document.getElementById(t1[day]).style.backgroundColor="aquamarine";
+            document.getElementById(mt1[day]).style.backgroundColor="aquamarine";
          }
          else if((h<=8)){ //第一節：0:00-8:59
             if(day-2 >= 0){
                document.getElementById(t7[day-2]).style.backgroundColor="white";
                document.getElementById(mt7[day-2]).style.backgroundColor="white";
             }
-            document.getElementById(t1[day-1]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt1[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(t1[day-1]).style.backgroundColor="aquamarine";
+            document.getElementById(mt1[day-1]).style.backgroundColor="aquamarine";
          }
          else if(h==9){ //第二節：上午9:00-9:59
             document.getElementById(t1[day-1]).style.backgroundColor="white";
             document.getElementById(mt1[day-1]).style.backgroundColor="white";
-            document.getElementById(t2[day-1]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt2[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(t2[day-1]).style.backgroundColor="aquamarine";
+            document.getElementById(mt2[day-1]).style.backgroundColor="aquamarine";
          }
          else if(h==10){ //第三節：上午10:00-10:59
             document.getElementById(t2[day-1]).style.backgroundColor="white";
             document.getElementById(mt2[day-1]).style.backgroundColor="white";
-            document.getElementById(t3[day-1]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt3[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(t3[day-1]).style.backgroundColor="aquamarine";
+            document.getElementById(mt3[day-1]).style.backgroundColor="aquamarine";
          } 
          else if(h==11){ //第四節：11:00-11:59
             document.getElementById(t3[day-1]).style.backgroundColor="white";
             document.getElementById(mt3[day-1]).style.backgroundColor="white";
-            document.getElementById(t4[day-1]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt4[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(t4[day-1]).style.backgroundColor="aquamarine";
+            document.getElementById(mt4[day-1]).style.backgroundColor="aquamarine";
          }
          else if((h==12) || (h==13) || (h==14&&m<=9)){ //第五節：12:00-14:09 
             document.getElementById(t4[day-1]).style.backgroundColor="white";
             document.getElementById(mt4[day-1]).style.backgroundColor="white";
-            document.getElementById(t5[day-1]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt5[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(t5[day-1]).style.backgroundColor="aquamarine";
+            document.getElementById(mt5[day-1]).style.backgroundColor="aquamarine";
          }
          else if((h==14&&m>=10) || (h==15&&m<=9)){ //第六節：14:10-15:09
             document.getElementById(t5[day-1]).style.backgroundColor="white";
             document.getElementById(mt5[day-1]).style.backgroundColor="white";
-            document.getElementById(t6[day-1]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt6[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(t6[day-1]).style.backgroundColor="aquamarine";
+            document.getElementById(mt6[day-1]).style.backgroundColor="aquamarine";
          }
          else if((h==15&&m>=10) || (h==16&&m<=9)){ //第七節：15:10-16:09
             document.getElementById(t6[day-1]).style.backgroundColor="white";
             document.getElementById(mt6[day-1]).style.backgroundColor="white";
-            document.getElementById(t7[day-1]).style.backgroundColor="AEFFC1";
-            document.getElementById(mt7[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(t7[day-1]).style.backgroundColor="aquamarine";
+            document.getElementById(mt7[day-1]).style.backgroundColor="aquamarine";
          }
          
         setInterval(checkUpdateColors, 3000);
