@@ -34,8 +34,6 @@ a:active { text-decoration: none; }
             var day = d.getDay(); //Sunday is 0, Monday is 1
             
 
-    
-
 
             var t1 = ["a1","b1","c1","d1","e1"];
             var t2 = ["a2","b2","c2","d2","e2"];
@@ -52,91 +50,61 @@ a:active { text-decoration: none; }
             var mt5 = ["ma5","mb5","mc5","md5","me5"];
             var mt6 = ["ma6","mb6","mc6","md6","me6"];
             var mt7 = ["ma7","mb7","mc7","md7","me7"];
-            for(i=1; i<=5; i++){
-            if(
-                h==16&&m>=10&&day==i-1 ||
-                h>=17&&h<=24&&day==i-1 ||
-                h>=0&&h<=8&&day==i
-            ){//第一節：前天的下午4:10-下午12:00，上午0:00-上午9:00
-                 document.getElementById(t1[i-1]).style.backgroundColor="AEFFC1";
-                 document.getElementById(mt1[i-1]).style.backgroundColor="AEFFC1";
-                 break;
 
-                } 
-            else{ document.getElementById(t1[i-1]).style.backgroundColor="fff";
-            document.getElementById(mt1[i-1]).style.backgroundColor="fff";}
-            }
+         
 
-            //第二節：上午9:00-9:59
-            for(i=1; i<=5; i++){
-                if(h==9&&day==i){
-                    document.getElementById(t2[i-1]).style.backgroundColor="AEFFC1";
-                    document.getElementById(mt2[i-1]).style.backgroundColor="AEFFC1";
-                    break;
-                }else {
-                    document.getElementById(t2[i-1]).style.backgroundColor="fff";
-                    document.getElementById(mt2[i-1]).style.backgroundColor="fff";
-                }
+
+         if((h==16&&m>=10) || (h>=17)){ //第一節：前一天的16:10-24:00
+            document.getElementById(t7[day-1]).style.backgroundColor="white";
+            document.getElementById(mt7[day-1]).style.backgroundColor="white";
+            document.getElementById(t1[day]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt1[day]).style.backgroundColor="AEFFC1";
+         }
+         else if((h<=8)){ //第一節：0:00-8:59
+            if(day-2 >= 0){
+               document.getElementById(t7[day-2]).style.backgroundColor="white";
+               document.getElementById(mt7[day-2]).style.backgroundColor="white";
             }
-            
-            //第三節：上午10:00-10:59
-            for(i=1; i<=5; i++){
-                if(h==10&&day==i){
-                    document.getElementById(t3[i-1]).style.backgroundColor="AEFFC1";
-                    document.getElementById(mt3[i-1]).style.backgroundColor="AEFFC1";
-                    break;
-                }else {
-                    document.getElementById(t3[i-1]).style.backgroundColor="fff";
-                    document.getElementById(mt3[i-1]).style.backgroundColor="fff";
-                }
-            }
-            //第四節：11:00-11:59
-            for(i=1; i<=5; i++){
-                if(h==11&&day==i){
-                    document.getElementById(t4[i-1]).style.backgroundColor="AEFFC1";
-                    document.getElementById(mt4[i-1]).style.backgroundColor="AEFFC1";
-                    break;
-                }else{
-                    document.getElementById(t4[i-1]).style.backgroundColor="fff";
-                    document.getElementById(mt4[i-1]).style.backgroundColor="fff";
-                }
-            }
-            //第五節：12:00-14:10
-            
-            for(i=1; i<=5; i++){
-                if((h>=12&&h<=13&&day==i) || (h==14&&m<10&&day==i)){
-                    document.getElementById(t5[i-1]).style.backgroundColor="AEFFC1";
-                    document.getElementById(mt5[i-1]).style.backgroundColor="AEFFC1";
-                    break;
-                }else {
-                    document.getElementById(t5[i-1]).style.backgroundColor="fff";
-                    document.getElementById(mt5[i-1]).style.backgroundColor="fff";
-                }
-            }
-            //第六節：14:10-15:10
-            for(i=1; i<=5; i++){
-                
-                if((h==14&&m>=10&&day==i)||(h==15&&m<10&&day==i)){
-                    document.getElementById(t6[i-1]).style.backgroundColor="AEFFC1";
-                    document.getElementById(mt6[i-1]).style.backgroundColor="AEFFC1";
-                    break;
-                }else{
-                    document.getElementById(t6[i-1]).style.backgroundColor="fff";
-                    document.getElementById(mt6[i-1]).style.backgroundColor="fff";
-                } 
-            }
-            //第七節：15:10-16:10
-            for(i=1; i<=5; i++){
-                
-                if((h==15&&m>=10&&day==i)||(h==16&&m<10&&day==i)){
-                    document.getElementById(t7[i-1]).style.backgroundColor="AEFFC1";
-                    document.getElementById(mt7[i-1]).style.backgroundColor="AEFFC1";
-                    break;
-                }else{
-                    document.getElementById(t7[i-1]).style.backgroundColor="fff";
-                    document.getElementById(mt7[i-1]).style.backgroundColor="fff";
-                }
-            }
+            document.getElementById(t1[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt1[day-1]).style.backgroundColor="AEFFC1";
+         }
+         else if(h==9){ //第二節：上午9:00-9:59
+            document.getElementById(t1[day-1]).style.backgroundColor="white";
+            document.getElementById(mt1[day-1]).style.backgroundColor="white";
+            document.getElementById(t2[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt2[day-1]).style.backgroundColor="AEFFC1";
+         }
+         else if(h==10){ //第三節：上午10:00-10:59
+            document.getElementById(t2[day-1]).style.backgroundColor="white";
+            document.getElementById(mt2[day-1]).style.backgroundColor="white";
+            document.getElementById(t3[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt3[day-1]).style.backgroundColor="AEFFC1";
+         } 
+         else if(h==11){ //第四節：11:00-11:59
+            document.getElementById(t3[day-1]).style.backgroundColor="white";
+            document.getElementById(mt3[day-1]).style.backgroundColor="white";
+            document.getElementById(t4[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt4[day-1]).style.backgroundColor="AEFFC1";
+         }
+         else if((h==12) || (h==13) || (h==14&&m<=9)){ //第五節：12:00-14:09 
+            document.getElementById(t4[day-1]).style.backgroundColor="white";
+            document.getElementById(mt4[day-1]).style.backgroundColor="white";
+            document.getElementById(t5[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt5[day-1]).style.backgroundColor="AEFFC1";
+         }
+         else if((h==14&&m>=10) || (h==15&&m<=9)){ //第六節：14:10-15:09
+            document.getElementById(t5[day-1]).style.backgroundColor="white";
+            document.getElementById(mt5[day-1]).style.backgroundColor="white";
+            document.getElementById(t6[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt6[day-1]).style.backgroundColor="AEFFC1";
+         }
+         else if((h==15&&m>=10) || (h==16&&m<=9)){ //第七節：15:10-16:09
+            document.getElementById(t6[day-1]).style.backgroundColor="white";
+            document.getElementById(mt6[day-1]).style.backgroundColor="white";
+            document.getElementById(t7[day-1]).style.backgroundColor="AEFFC1";
+            document.getElementById(mt7[day-1]).style.backgroundColor="AEFFC1";
+         }
+         
         setInterval(checkUpdateColors, 3000);
         }
     </script>
