@@ -1,1 +1,443 @@
-<h1>Hello, World!</h1>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>普二信班網</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <meta property="og:url" content="http://nssh.tk/" />
+    <meta property="og:title"  content="普二信班網" />
+    <meta property="og:description" content="普二信班網的功能包含：課表、作業。動態的 Google Classroom 連結課表，會根據目前時間將該堂課標示出來。" />
+    <meta property="og:image"   content="https://nssh.tk/cover.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+      .tdmin {
+        width: 40%;
+        white-space: nowrap;
+    }
+    a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        
+        function checkUpdateColors(){
+            var d = new Date();
+            
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var day = d.getDay(); //Sunday is 0, Monday is 1
+            
+
+    
+
+
+            var t1 = ["a1","b1","c1","d1","e1"];
+            var t2 = ["a2","b2","c2","d2","e2"];
+            var t3 = ["a3","b3","c3","d3","e3"];
+            var t4 = ["a4","b4","c4","d4","e4"];
+            var t5 = ["a5","b5","c5","d5","e5"];
+            var t6 = ["a6","b6","c6","d6","e6"];
+            var t7 = ["a7","b7","c7","d7","e7"];
+
+            var mt1 = ["ma1","mb1","mc1","md1","me1"];
+            var mt2 = ["ma2","mb2","mc2","md2","me2"];
+            var mt3 = ["ma3","mb3","mc3","md3","me3"];
+            var mt4 = ["ma4","mb4","mc4","md4","me4"];
+            var mt5 = ["ma5","mb5","mc5","md5","me5"];
+            var mt6 = ["ma6","mb6","mc6","md6","me6"];
+            var mt7 = ["ma7","mb7","mc7","md7","me7"];
+            for(i=1; i<=5; i++){
+            if(
+                h==16&&m>=10&&day==i-1 ||
+                h>=17&&h<=24&&day==i-1 ||
+                h>=0&&h<=8&&day==i
+            ){//第一節：前天的下午4:10-下午12:00，上午0:00-上午9:00
+                 document.getElementById(t1[i-1]).style.backgroundColor="AEFFC1";
+                 document.getElementById(mt1[i-1]).style.backgroundColor="AEFFC1";
+                 break;
+
+                } 
+            else{ document.getElementById(t1[i-1]).style.backgroundColor="fff";
+            document.getElementById(mt1[i-1]).style.backgroundColor="fff";}
+            }
+
+            //第二節：上午9:00-9:59
+            for(i=1; i<=5; i++){
+                if(h==9&&day==i){
+                    document.getElementById(t2[i-1]).style.backgroundColor="AEFFC1";
+                    document.getElementById(mt2[i-1]).style.backgroundColor="AEFFC1";
+                    break;
+                }else {
+                    document.getElementById(t2[i-1]).style.backgroundColor="fff";
+                    document.getElementById(mt2[i-1]).style.backgroundColor="fff";
+                }
+            }
+            
+            //第三節：上午10:00-10:59
+            for(i=1; i<=5; i++){
+                if(h==10&&day==i){
+                    document.getElementById(t3[i-1]).style.backgroundColor="AEFFC1";
+                    document.getElementById(mt3[i-1]).style.backgroundColor="AEFFC1";
+                    break;
+                }else {
+                    document.getElementById(t3[i-1]).style.backgroundColor="fff";
+                    document.getElementById(mt3[i-1]).style.backgroundColor="fff";
+                }
+            }
+            //第四節：11:00-11:59
+            for(i=1; i<=5; i++){
+                if(h==11&&day==i){
+                    document.getElementById(t4[i-1]).style.backgroundColor="AEFFC1";
+                    document.getElementById(mt4[i-1]).style.backgroundColor="AEFFC1";
+                    break;
+                }else{
+                    document.getElementById(t4[i-1]).style.backgroundColor="fff";
+                    document.getElementById(mt4[i-1]).style.backgroundColor="fff";
+                }
+            }
+            //第五節：12:00-14:10
+            
+            for(i=1; i<=5; i++){
+                if((h>=12&&h<=13&&day==i) || (h==14&&m<10&&day==i)){
+                    document.getElementById(t5[i-1]).style.backgroundColor="AEFFC1";
+                    document.getElementById(mt5[i-1]).style.backgroundColor="AEFFC1";
+                    break;
+                }else {
+                    document.getElementById(t5[i-1]).style.backgroundColor="fff";
+                    document.getElementById(mt5[i-1]).style.backgroundColor="fff";
+                }
+            }
+            //第六節：14:10-15:10
+            for(i=1; i<=5; i++){
+                
+                if((h==14&&h>=10&&day==i)||(h==15&&h<10&&day==i)){
+                    document.getElementById(t6[i-1]).style.backgroundColor="AEFFC1";
+                    document.getElementById(mt6[i-1]).style.backgroundColor="AEFFC1";
+                    break;
+                }else{
+                    document.getElementById(t6[i-1]).style.backgroundColor="fff";
+                    document.getElementById(mt6[i-1]).style.backgroundColor="fff";
+                } 
+            }
+            //第七節：15:10-16:10
+            for(i=1; i<=5; i++){
+                
+                if((h==15&&h>=10&&day==i)||(h==16&&h<10&&day==i)){
+                    document.getElementById(t7[i-1]).style.backgroundColor="AEFFC1";
+                    document.getElementById(mt7[i-1]).style.backgroundColor="AEFFC1";
+                    break;
+                }else{
+                    document.getElementById(t7[i-1]).style.backgroundColor="fff";
+                    document.getElementById(mt7[i-1]).style.backgroundColor="fff";
+                }
+            }
+        setInterval(checkUpdateColors, 3000);
+        }
+    </script>
+
+</head>
+<body>
+    <script>window.onload = checkUpdateColors;</script>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">普二信班網</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">首頁</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav><br>
+      <p style="padding-left: 5px;">提示：使用 APP 版 Google Classroom 請選擇「APP」。</p>
+ 
+
+
+   
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    
+      <div class="demo" style="padding-left: 5px;">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#a">網頁</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#b">APP</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="a"> <!--a start-->
+
+
+            <div style="margin: auto;  ">
+                <table class="table tdmin text-center" style="white-space: nowrap; margin-left: auto; margin-right: auto;">
+                  <tbody>
+                     <tr>
+                        <td>時間</td>
+                        <td>一</td>
+                        <td>二</td>
+                        <td>三</td>
+                        <td>四</td>
+                        <td>五</td>
+                     </tr>
+                     <tr>
+                        <td>8:20-9:00</td>
+                        <td id ="a1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                        <td id ="b1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                        <td id ="c1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                        <td id ="d1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                        <td id ="e1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                     </tr>
+                     <tr>
+                        <td>9:20-10:00</td>
+                        <td id ="a2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                        <td id ="b2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                        <td id ="c2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                        <td id ="d2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTMwNzg2Mjk0" target="_blank"><strong>生物</strong></a></td>
+                        <td id ="e2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                     </tr>
+                     <tr>
+                        <td>10:20-11:00</td>
+                        <td id ="a3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                        <td id ="b3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                        <td id ="c3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTMwNzg2Mjk0" target="_blank"><strong>生物</strong></a></td>
+                        <td id ="d3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                        <td id ="e3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2Nzg2NzE4MDQ0" target="_blank"><strong>地科</strong></a></td>
+                     </tr>
+                     <tr>
+                        <td>11:20-12:00</td>
+                        <td id ="a4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcxMDgzNjU3ODg5" target="_blank"><strong>體育</strong></a></td>
+                        <td id ="b4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                        <td id ="c4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                        <td id ="d4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                        <td id ="e4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                     </tr>
+                     <tr>
+                        <td>1:30-2:10</td>
+                        <td id ="a5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                        <td id ="b5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2MTI1MDgwMjc5" target="_blank"><strong>英聽</strong></a></td>
+                        <td id ="c5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                        <td id ="d5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                        <td id ="e5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                     </tr>
+                     <tr>
+                        <td>2:30-3:10</td>
+                        <td id ="a6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                        <td id ="b6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                        <td id ="c6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                        <td id ="d6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                        <td id ="e6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                     </tr>
+                     <tr>
+                        <td>3:30-4:10</td>
+                        <td id ="a7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                        <td id ="b7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                        <td id ="c7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2Nzg2NzE4MDQ0" target="_blank"><strong>地科</strong></a></td>
+                        <td id ="d7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                        <td id ="e7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                     </tr>
+                  </tbody>
+               </table>
+              </div>
+
+
+          </div><!--a end-->
+          <div class="tab-pane fade" id="b"><!--b start-->
+            
+           
+            <div style="margin: auto;  ">
+               <table class="table tdmin text-center" style="white-space: nowrap; margin-left: auto; margin-right: auto;">
+                 <tbody>
+                    <tr>
+                       <td>時間</td>
+                       <td>一</td>
+                       <td>二</td>
+                       <td>三</td>
+                       <td>四</td>
+                       <td>五</td>
+                    </tr>
+                    <tr>
+                       <td>8:20-9:00</td>
+                       <td id ="ma1"><a href="https://classroom.google.com/u/1/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                       <td id ="mb1"><a href="https://classroom.google.com/u/1/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                       <td id ="mc1"><a href="https://classroom.google.com/u/1/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                       <td id ="md1"><a href="https://classroom.google.com/u/1/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                       <td id ="me1"><a href="https://classroom.google.com/u/1/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                    </tr>
+                    <tr>
+                       <td>9:20-10:00</td>
+                       <td id ="ma2"><a href="https://classroom.google.com/u/1/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                       <td id ="mb2"><a href="https://classroom.google.com/u/1/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                       <td id ="mc2"><a href="https://classroom.google.com/u/1/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                       <td id ="md2"><a href="https://classroom.google.com/u/1/c/MzcyOTMwNzg2Mjk0" target="_blank"><strong>生物</strong></a></td>
+                       <td id ="me2"><a href="https://classroom.google.com/u/1/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                    </tr>
+                    <tr>
+                       <td>10:20-11:00</td>
+                       <td id ="ma3"><a href="https://classroom.google.com/u/1/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                       <td id ="mb3"><a href="https://classroom.google.com/u/1/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                       <td id ="mc3"><a href="https://classroom.google.com/u/1/c/MzcyOTMwNzg2Mjk0" target="_blank"><strong>生物</strong></a></td>
+                       <td id ="md3"><a href="https://classroom.google.com/u/1/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                       <td id ="me3"><a href="https://classroom.google.com/u/1/c/MzY2Nzg2NzE4MDQ0" target="_blank"><strong>地科</strong></a></td>
+                    </tr>
+                    <tr>
+                       <td>11:20-12:00</td>
+                       <td id ="ma4"><a href="https://classroom.google.com/u/1/c/MzcxMDgzNjU3ODg5" target="_blank"><strong>體育</strong></a></td>
+                       <td id ="mb4"><a href="https://classroom.google.com/u/1/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                       <td id ="mc4"><a href="https://classroom.google.com/u/1/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                       <td id ="md4"><a href="https://classroom.google.com/u/1/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                       <td id ="me4"><a href="https://classroom.google.com/u/1/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                    </tr>
+                    <tr>
+                       <td>1:30-2:10</td>
+                       <td id ="ma5"><a href="https://classroom.google.com/u/1/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                       <td id ="mb5"><a href="https://classroom.google.com/u/1/c/MzY2MTI1MDgwMjc5" target="_blank"><strong>英聽</strong></a></td>
+                       <td id ="mc5"><a href="https://classroom.google.com/u/1/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                       <td id ="md5"><a href="https://classroom.google.com/u/1/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                       <td id ="me5"><a href="https://classroom.google.com/u/1/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                    </tr>
+                    <tr>
+                       <td>2:30-3:10</td>
+                       <td id ="ma6"><a href="https://classroom.google.com/u/1/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                       <td id ="mb6"><a href="https://classroom.google.com/u/1/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                       <td id ="mc6"><a href="https://classroom.google.com/u/1/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                       <td id ="md6"><a href="https://classroom.google.com/u/1/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                       <td id ="me6"><a href="https://classroom.google.com/u/1/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                    </tr>
+                    <tr>
+                       <td>3:30-4:10</td>
+                       <td id ="ma7"><a href="https://classroom.google.com/u/1/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                       <td id ="mb7"><a href="https://classroom.google.com/u/1/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                       <td id ="mc7"><a href="https://classroom.google.com/u/1/c/MzY2Nzg2NzE4MDQ0" target="_blank"><strong>地科</strong></a></td>
+                       <td id ="md7"><a href="https://classroom.google.com/u/1/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                       <td id ="me7"><a href="https://classroom.google.com/u/1/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                    </tr>
+                 </tbody>
+              </table>
+             </div>
+
+
+        </div><!--b end-->
+        </div>
+      </div>
+      
+
+
+
+
+
+
+      <!--
+
+      <div style="margin: auto;  ">
+        <table class="table tdmin text-center" style="white-space: nowrap; margin-left: auto; margin-right: auto;">
+          <tbody>
+             <tr>
+                <td>時間</td>
+                <td>一</td>
+                <td>二</td>
+                <td>三</td>
+                <td>四</td>
+                <td>五</td>
+             </tr>
+             <tr>
+                <td>8:20-9:00</td>
+                <td id ="a1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                <td id ="b1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                <td id ="c1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                <td id ="d1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+                <td id ="e1"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2NjY1MDY3ODY0" target="_blank"><strong>彈性</strong></a></td>
+             </tr>
+             <tr>
+                <td>9:20-10:00</td>
+                <td id ="a2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                <td id ="b2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                <td id ="c2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                <td id ="d2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTMwNzg2Mjk0" target="_blank"><strong>生物</strong></a></td>
+                <td id ="e2"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+             </tr>
+             <tr>
+                <td>10:20-11:00</td>
+                <td id ="a3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                <td id ="b3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                <td id ="c3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTMwNzg2Mjk0" target="_blank"><strong>生物</strong></a></td>
+                <td id ="d3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+                <td id ="e3"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2Nzg2NzE4MDQ0" target="_blank"><strong>地科</strong></a></td>
+             </tr>
+             <tr>
+                <td>11:20-12:00</td>
+                <td id ="a4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcxMDgzNjU3ODg5" target="_blank"><strong>體育</strong></a></td>
+                <td id ="b4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                <td id ="c4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                <td id ="d4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                <td id ="e4"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDIyNzE1MTMx" target="_blank"><strong>化學</strong></a></td>
+             </tr>
+             <tr>
+                <td>1:30-2:10</td>
+                <td id ="a5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                <td id ="b5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2MTI1MDgwMjc5" target="_blank"><strong>英聽</strong></a></td>
+                <td id ="c5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                <td id ="d5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                <td id ="e5"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+             </tr>
+             <tr>
+                <td>2:30-3:10</td>
+                <td id ="a6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                <td id ="b6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                <td id ="c6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+                <td id ="d6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                <td id ="e6"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+             </tr>
+             <tr>
+                <td>3:30-4:10</td>
+                <td id ="a7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTI4NzQ5OTIw" target="_blank"><strong>國文</strong></a></td>
+                <td id ="b7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzczMDgyNjcwMDg4" target="_blank"><strong>物理</strong></a></td>
+                <td id ="c7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzY2Nzg2NzE4MDQ0" target="_blank"><strong>地科</strong></a></td>
+                <td id ="d7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcwNzc0NDA0ODE0" target="_blank"><strong>數學</strong></a></td>
+                <td id ="e7"><a href="https://classroom.google.com/a/stdmail.nssh.ntpc.edu.tw/c/MzcyOTU0NzcwNTA3" target="_blank"><strong>英文</strong></a></td>
+             </tr>
+          </tbody>
+       </table>
+      </div>
+
+
+-->
+      
+<br>
+<h1 class="display-6" style="text-align: center;">作業</h1>
+
+
+
+<div class="card bg-light mb-3 " style="max-width: 18rem; margin: auto; ">
+    <div class="card-header">7/19(一)</div>
+    <div class="card-body">
+
+      <p class="card-text">
+          
+        <ul>
+            <li>三角函數的關係3題</li>
+            <li>物理講義單元1</li>
+          </ul>
+        </p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<br><br>
+</body>
+</html>
