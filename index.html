@@ -65,29 +65,14 @@
 
       var count = 0;
 
-      var h = 8;
-      var m = 0;
-      var day = 1;
       function checkUpdateColors(){
-         /*
+         
          var d = new Date(); 
          var h = d.getHours();
          var m = d.getMinutes();
          var day = d.getDay(); //Sun=0, Mon=1
-         */
-         if(day>=6){
-            day=0;
-         }
-         if(h>=17){
-            day++;
-            h=8;
-         }
-        if(m>=60){
-           h++;
-           m=0;
-        }
-        m+=1;
-
+         
+   
         if(m>=0&&m<=5){
             count=0;
         }
@@ -179,7 +164,7 @@
          }
          return;
         }
-      setInterval(checkUpdateColors, 70);
+      setInterval(checkUpdateColors, 3000);
    </script>
 </head>
 <body>
